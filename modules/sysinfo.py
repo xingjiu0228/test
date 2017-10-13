@@ -25,6 +25,4 @@ def run(**args):
            + str(pc_mem.available/1024/1024) + "/" + str(pc_mem.total/1024/1024) + " KB"
     return str(info)
 
-print run()
-
 
