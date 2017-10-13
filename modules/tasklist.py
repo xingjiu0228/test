@@ -29,7 +29,11 @@ def get_process_info():
      if Process32First(h, ctypes.byref(pe)):
         while True:
             #yield pe.th32ProcessID, pe.szExeFile
+<<<<<<< HEAD
             process_list.append("%4d: %s" % (pe.th32ProcessID, pe.szExeFile))
+=======
+            process_list.append("%4d: %s\r\n" % (pe.th32ProcessID, pe.szExeFile))
+>>>>>>> 44e05c4fb3c55828c4010b8095a0f07f596a0022
             if not Process32Next(h,  ctypes.byref(pe)):
                 break
      CloseHandle(h)
