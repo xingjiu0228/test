@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 [
+	{
+	"module": "dirlister"
+	},
 	{
 	"module": "sysinfo"
 	}
-=======
-[
-	{
-	"module": "sysinfo"
-	}
->>>>>>> 8cea3f937d6c6ee8bc307d096b567a1d2ac754fe
 ]
