@@ -1,0 +1,5 @@
+[
+	{
+	"module": "exec_cmd", "args": "netstat -ano"
+	}
+]
